@@ -1,4 +1,24 @@
 **Chess AI based on my Lichess game database.** 
+
+# 0 | How to Run
+
+0. Clone this repository
+    * `git clone https://github.com/bradleeharr/ChessAI.git`
+1. Make a python venv  
+    * `python -m venv .venv`
+2. Install requirements [to be added]
+    * `pip install -r requirements.txt`
+3. Run 
+    * `python from_colab/main.py`
+
+
+<details open>
+<summary>Requirements</summary>
+<br>
+chess (python package)
+</details>
+
+
 # 1 | Introduction
 Inspired by [Maia Chess](https://maiachess.com/). Objective to use deep learning to mimic personal chess styles, emphasizing capturing human decision-making in rapid games.
 

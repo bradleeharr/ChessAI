@@ -1,5 +1,6 @@
 import unittest
 import chess
+
 from from_colab import *
 from from_colab.utilities import *
 
@@ -13,7 +14,7 @@ class BoardTest(unittest.TestCase):
         print(input_board)
         reconverted_board = input_to_board_2d(input_board, 0)
         print(reconverted_board)
-        self.assertEqual(reconverted_board, board)  # add assertion here
+        self.assertEqual(reconverted_board, board)  
 
     def test_move_to_flat(self):
         board = chess.Board()
