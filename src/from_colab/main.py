@@ -1,6 +1,6 @@
-from neural_network_model import *
-from pytorch_lightning_classes import *
-from utilities import *
+from .neural_network_model import *
+from .pytorch_lightning_classes import *
+from .utilities import *
 import os
 import wandb
 from pytorch_lightning.loggers.wandb import WandbLogger
