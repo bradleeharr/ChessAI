@@ -11,7 +11,7 @@ import random
 
 from torch.optim.lr_scheduler import StepLR, CyclicLR, CosineAnnealingLR
 
-from from_colab.neural_network_model import NeuralNetwork
+from neural_network_model import NeuralNetwork
 from utilities import *
 
 
