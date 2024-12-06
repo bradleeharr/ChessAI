@@ -1,4 +1,5 @@
 import logging
+import numpy as np
 
 from torch.utils.data import DataLoader, Dataset
 import pytorch_lightning as pl
@@ -12,7 +13,7 @@ import random
 from torch.optim.lr_scheduler import StepLR, CyclicLR, CosineAnnealingLR
 
 from neural_network_model import NeuralNetwork
-from utilities import *
+from utilities import download_games_to_pgn, load_games_from_pgn, process_game, get_legal_moves_mask, input_to_board, filter_illegal_moves, flat_to_move
 
 
 class ChessDataset(Dataset):

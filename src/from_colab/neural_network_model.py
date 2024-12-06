@@ -6,7 +6,7 @@ import torch.nn.functional as F
 import torch.utils.data as data
 import torch
 from torch.optim.lr_scheduler import StepLR
-from utilities import *
+
 
 
 class SEBlock(nn.Module):

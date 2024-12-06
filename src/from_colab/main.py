@@ -1,8 +1,11 @@
-from neural_network_model import *
-from pytorch_lightning_classes import *
-from utilities import *
 import os
 import wandb
+import torch
+import pytorch_lightning as pl
+
+from pytorch_lightning_classes import ChessDataModule, ChessModel
+
+from utilities import download_games_to_pgn
 from pytorch_lightning.loggers.wandb import WandbLogger
 from pytorch_lightning.callbacks import EarlyStopping, LearningRateMonitor
 
