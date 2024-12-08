@@ -1,8 +1,8 @@
 .idea/vcs.xml
 *_lichess_games.pgn
-from_colab/__pycache__/
-from_colab/*_lichess_games.pgn
-from_colab/lightning_logs/
-from_colab/wandb/
+dnn_train/__pycache__/
+dnn_train/*_lichess_games.pgn
+dnn_train/lightning_logs/
+dnn_train/wandb/
 maia_chess_backend/
 move_prediction/

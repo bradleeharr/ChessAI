@@ -9,7 +9,7 @@
 2. Install requirements [to be added]
     * `pip install -r requirements.txt`
 3. Run 
-    * `python from_colab/main.py`
+    * `python dnn_train/main.py`
 4. Weights and Biases requires an API key - you will have to create an account or provide an API key 
     * Go to https://wandb.ai/home for an API key, or press "3" after running to skip this and not have results visualized.
 
