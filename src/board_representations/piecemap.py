@@ -8,13 +8,13 @@ from src.board_representations.board_representation import BoardRepresentation
 class PieceMap(BoardRepresentation):
     # TODO: Currently only uses single ply -- "num_previous_positions" is redundant
     def board_to_model_input(self, board):
-        board_input = np.zeros((8, 8, self.num_previous_positions + 1), dtype=int)
+        board_input = np.zeros((self.num_previous_positions + 1, 8, 8), dtype=int)
 
         for i, piece in enumerate(self.pieces_order):
             for square in board.pieces(piece, chess.WHITE):
-                board_input[chess.square_rank(square), chess.square_file(square), 0] = i + 1
+                board_input[0, chess.square_rank(square), chess.square_file(square)] = i + 1
             for square in board.pieces(piece, chess.BLACK):
-                board_input[chess.square_rank(square), chess.square_file(square), 0] = -(i + 1)
+                board_input[0, chess.square_rank(square), chess.square_file(square)] = -(i + 1)
 
         return board_input
 
@@ -23,7 +23,7 @@ class PieceMap(BoardRepresentation):
         board.clear_board()
         for rank in range(8):
             for file in range(8):
-                piece = model_input[rank, file, 0]
+                piece = model_input[0, rank, file]
                 if piece == 0:
                     continue
                 color = chess.WHITE if piece > 0 else chess.BLACK
