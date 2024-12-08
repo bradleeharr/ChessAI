@@ -3,7 +3,7 @@ import wandb
 import torch
 import pytorch_lightning as pl
 
-from pytorch_lightning_classes import ChessDataModule, ChessModel
+from dnn_train.pytorch_lightning_classes import ChessDataModule, ChessModel
 
 from utilities import download_games_to_pgn
 from pytorch_lightning.loggers.wandb import WandbLogger

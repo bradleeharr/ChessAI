@@ -12,7 +12,7 @@ import random
 
 from torch.optim.lr_scheduler import StepLR, CyclicLR, CosineAnnealingLR
 
-from neural_network_model import NeuralNetwork
+from dnn_train.neural_network_model import NeuralNetwork
 from utilities import download_games_to_pgn, load_games_from_pgn, process_game, get_legal_moves_mask, input_to_board, filter_illegal_moves, flat_to_move
 
 

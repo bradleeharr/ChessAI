@@ -1,7 +1,7 @@
 import chess
 import numpy as np
 
-from board_representations import BoardRepresentation
+from src.board_representations.board_representation import BoardRepresentation
 
 class BitBoard(BoardRepresentation):
 
@@ -32,7 +32,7 @@ class BitBoard(BoardRepresentation):
         return board_input
 
 
-    def input_to_board(self, board_input):
+    def model_input_to_board(self, board_input):
         pieces_order = [chess.PAWN, chess.ROOK, chess.KNIGHT, chess.BISHOP, chess.QUEEN, chess.KING]
         board = chess.Board()
         board.clear_board()

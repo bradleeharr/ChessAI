@@ -11,7 +11,7 @@ After initialization, holds:
 class BoardRepresentation:
     pieces_order = [chess.ROOK, chess.KNIGHT, chess.BISHOP, chess.QUEEN, chess.KING, chess.PAWN]
 
-    def __init__(self, board, num_previous_positions):
+    def __init__(self, num_previous_positions):
         self.num_previous_positions = num_previous_positions
         pass
         
@@ -21,5 +21,5 @@ class BoardRepresentation:
     def board_to_model_input(self, board):
         raise NotImplementedError("Implement the board_to_model_input() method which should convert the board from a chess.Board() object to a suitable input for your NN model")
 
-    def model_input_to_board(self, model_input);
+    def model_input_to_board(self, model_input):
         raise NotImplementedError("Implement the board_to_model_input() method which should convert the board from a chess.Board() object to a suitable input for your NN model")

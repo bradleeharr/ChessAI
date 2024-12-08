@@ -6,3 +6,4 @@ dnn_train/lightning_logs/
 dnn_train/wandb/
 maia_chess_backend/
 move_prediction/
+*/__pycache__/*
