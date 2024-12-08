@@ -14,7 +14,7 @@ def test_BitBoard_init():
 
     assert board1.num_previous_positions == prev_pos1
     assert board2.num_previous_positions == prev_pos2
-    
+
 
 # Tests that the 2d input conversion board method will convert the position to the board
 def test_BitBoard_0_previous_positions():
@@ -24,8 +24,10 @@ def test_BitBoard_0_previous_positions():
     model_input = bitboard.board_to_model_input(input_board)
     reconverted_board = bitboard.model_input_to_board(model_input)
     
-    
-    assert np.size(model_input) == np.array((8,8,7))
+
+    model_input_shape = np.shape(model_input)
+    expected_shape = np.array((12, 8, 8))
+    assert np.all(model_input_shape == expected_shape) 
     assert reconverted_board == input_board  
 
 # Tests that the 2d input conversion board method will convert the position in cases where depth is kept
@@ -36,7 +38,12 @@ def test_PieceMap_0_previous_positions():
     model_input = piecemap.board_to_model_input(input_board)
     reconverted_board = piecemap.model_input_to_board(model_input)
 
-    assert np.size(model_input) == np.array((8,8))
+    model_input_shape = np.shape(model_input)
+    expected_shape = np.array((1, 8, 8))
+
+    print(model_input_shape)
+
+    assert np.all(model_input_shape == expected_shape)
     assert reconverted_board == input_board
 
     """PLY = 5
