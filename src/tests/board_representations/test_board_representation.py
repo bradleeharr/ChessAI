@@ -1,12 +1,16 @@
 import pytest
 import chess
 
-from from_colab import *
-from from_colab.utilities import *
+from from_colab import board_representation
 
+def test_BoardRepresentation_init():
+    board = BoardRepresentation()
 
+    
 # Tests that the 2d input conversion board method will convert the position to the board
 def test_board_to_2d_input_0_previous_positions():
+    board = BoardRepresentation()
+
     board = chess.Board()
     input_board = board_to_input_2d(board, 0)
     reconverted_board = input_to_board_2d(input_board, 0)
