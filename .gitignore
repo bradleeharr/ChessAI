@@ -7,3 +7,4 @@ dnn_train/wandb/
 maia_chess_backend/
 move_prediction/
 */__pycache__/*
+src/board_representations/__pycache__
