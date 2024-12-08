@@ -28,8 +28,16 @@ It comprises 1,633 Bullet, 165 Blitz, and 244 Rapid games. Emphasizing Bullet ga
 # 3 | Methods
 **3.0 Board Features**:
 
- 8x8x12 map representation, where each 8x8 channel denotes a piece (12 total). A '1' indicates the presence of a piece, and '0' its absence
- 
+There are several possible board representations. For now, imagine you would like to capture a single state
+* Piece Map
+ * A simple 8x8x1 map representation. Each channel has a value: '1' indicates a pawn, '2' indicates a bishop, etc.
+
+* Bitboard:
+ * A 8x8x12 map representation, where each 8x8 channel denotes a piece (12 total). A '1' indicates the presence of a piece, and '0' its absence
+ * Bitboards are common in chess engines
+    
+
+uiop  
 **3.1 Move Features**:
 
  Moves were translated from the Universal Chess Interface to a numerical system, leading to 4096 potential classes.
