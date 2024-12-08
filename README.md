@@ -6,6 +6,8 @@
     * `git clone https://github.com/bradleeharr/ChessAI.git`
 1. Make a python venv  
     * `python -m venv .venv`
+2. Activate the venv
+    * `.venv/Scripts/activate` (on Windows)
 2. Install requirements [to be added]
     * `pip install -r requirements.txt`
 3. Run 
