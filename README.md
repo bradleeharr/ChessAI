@@ -1,4 +1,4 @@
-**Chess AI based on my Lichess game database.** 
+**Chess AI based on a Lichess game database.** 
 
 # 0 | How to Run
 
