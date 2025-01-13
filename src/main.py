@@ -67,7 +67,7 @@ if __name__ == '__main__':
         'parameters': {
             'dropout': {'max': 0.8, 'min': 0.0},
             'hidden_layer_size': {'max': 1000, 'min': 10},
-            'plys': {'max': 16, 'min': 1},  # {'max': 24, 'min': 1},
+            'plys': {'max': 1, 'min': 1},  # {'max': 24, 'min': 1},
             'lr': {'distribution': 'log_uniform_values', 'max': 2., 'min': 1e-9},
             'momentum': {'distribution': 'log_uniform_values', 'max': 2., 'min': 1e-9},
             'gamma': {'max': 1.1, 'min': 1e-4},

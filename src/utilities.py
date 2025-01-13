@@ -42,7 +42,7 @@ def load_games_from_pgn(pgn_file):
 
 
 # Processes a game to get all target player positions and move results
-def process_game(game, target_player, num_previous_positions):
+def process_game(game, target_player, board_representation):
     board = game.board()
     positions = []
     target_moves = []
@@ -64,7 +64,7 @@ def process_game(game, target_player, num_previous_positions):
 
         if player_to_move == target_player:
             try:
-                board_input = board_to_input(board.copy(), num_previous_positions) # board.turn
+                board_input = board_representation.board_to_model_input(board.copy()) # board.turn
                 positions.append(board_input)
                 target_moves.append(move_to_flat(move))
                 board.push(move)

@@ -13,8 +13,9 @@ import random
 from torch.optim.lr_scheduler import StepLR, CyclicLR, CosineAnnealingLR
 
 from dnn_train.neural_network_model import NeuralNetwork
-from utilities import download_games_to_pgn, load_games_from_pgn, process_game, get_legal_moves_mask, input_to_board, filter_illegal_moves, flat_to_move
+from utilities import load_games_from_pgn, process_game, get_legal_moves_mask, filter_illegal_moves, flat_to_move
 
+from board_representations.piecemap import PieceMap
 
 class ChessDataset(Dataset):
     def __init__(self, X, Y, plys):
@@ -50,8 +51,9 @@ class ChessDataModule(pl.LightningDataModule):
         allX = []
         ally = []
         idx = 0
+        board_representation = PieceMap(self.plys)
         for game in games:
-            positions, target_moves = process_game(game, self.target_player, num_previous_positions=self.plys)
+            positions, target_moves = process_game(game, self.target_player, board_representation=board_representation)
             allX.extend(positions)
             ally.extend(target_moves)
             idx = idx + 1

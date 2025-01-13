@@ -8,3 +8,4 @@ class UserVars():
 
     def save(self):
         set_key(find_dotenv(), "USERNAME", self.username)
+        

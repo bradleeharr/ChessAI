@@ -1,7 +1,7 @@
 import chess
 import numpy as np
 
-from src.board_representations.board_representation import BoardRepresentation
+from board_representations.board_representation import BoardRepresentation
 
 class BitBoard(BoardRepresentation):
 
