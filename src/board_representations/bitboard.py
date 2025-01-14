@@ -4,6 +4,10 @@ import numpy as np
 from board_representations.board_representation import BoardRepresentation
 
 class BitBoard(BoardRepresentation):
+    def __init__(self, num_previous_positions):
+        super().__init__(num_previous_positions)
+        self.in_channels = (num_previous_positions + 1)*12
+
 
     def board_to_model_input(self, board):
         pieces_order = [chess.PAWN, chess.ROOK, chess.KNIGHT, chess.BISHOP, chess.QUEEN, chess.KING]

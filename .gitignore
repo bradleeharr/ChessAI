@@ -8,3 +8,5 @@ maia_chess_backend/
 move_prediction/
 */__pycache__/*
 src/board_representations/__pycache__
+
+tests/board_representations/__pycache__/

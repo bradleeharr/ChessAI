@@ -92,6 +92,7 @@ class ChessModel(pl.LightningModule):
         self.weight_decay = config.weight_decay
         self.scheduler_type = config.scheduler_type
         self.momentum = config.momentum
+        self.board_representation = config.board_representation
 
     def training_step(self, batch, batch_idx):
         x, y = batch
@@ -116,7 +117,7 @@ class ChessModel(pl.LightningModule):
         try:
             boards = []
             for board in x:
-                boards.append(input_to_board(board))
+                boards.append(self.board_representation.input_to_board(board)) #TODO: Make PieceMap flexible so any BoardRepresentation can be included.
 
             legal_moves_mask = get_legal_moves_mask(boards)
             legal_moves_mask_tensor = torch.tensor(legal_moves_mask, dtype=torch.bool, device=x.device)

@@ -13,6 +13,7 @@ class BoardRepresentation:
 
     def __init__(self, num_previous_positions):
         self.num_previous_positions = num_previous_positions
+        
         pass
         
     def __str__(self):

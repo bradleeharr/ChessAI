@@ -6,6 +6,26 @@ from board_representations.board_representation import BoardRepresentation
 
 
 class PieceMap(BoardRepresentation):
+    """Piece Map: an 8 x 8 standard chess board representation.
+
+    Attributes:
+    ----------
+        num_previous_positions : int 
+            The number of previous positions. Min 0. Max (???)
+
+    Methods 
+    ----------
+        board_to_model_input(board : Chess.Board()):
+            Converts a chess.Board() object to a [num_previous_positions+1, 8, 8] size tensor
+
+        model_input_to_board(model_input: np.ndarray):
+            Processes the model input from a [num_previous_positions+1, 8, 8] tensor to a chess.Board() object
+        
+    """
+    def __init__(self, num_previous_positions):
+        super().__init__(num_previous_positions)
+        self.in_channels = num_previous_positions + 1
+
     # TODO: Currently only uses single ply -- "num_previous_positions" is redundant
     def board_to_model_input(self, board):
         board_input = np.zeros((self.num_previous_positions + 1, 8, 8), dtype=int)

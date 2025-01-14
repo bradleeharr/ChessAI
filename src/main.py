@@ -5,6 +5,8 @@ import pytorch_lightning as pl
 
 from dnn_train.pytorch_lightning_classes import ChessDataModule, ChessModel
 
+from board_representations.piecemap import PieceMap
+
 from utilities import download_games_to_pgn
 from pytorch_lightning.loggers.wandb import WandbLogger
 from pytorch_lightning.callbacks import EarlyStopping, LearningRateMonitor
@@ -29,6 +31,9 @@ def train_model(target_player='bubbakill7'):
 
     wandb.init(project="chess_testing_sweep")
     config = wandb.config
+
+    config.board_representation = PieceMap()
+
     wandb_logger = WandbLogger()
     data = ChessDataModule(config=config, batch_size=batch_size, target_player=target_player)
     model = ChessModel(config=config)
@@ -67,7 +72,7 @@ if __name__ == '__main__':
         'parameters': {
             'dropout': {'max': 0.8, 'min': 0.0},
             'hidden_layer_size': {'max': 1000, 'min': 10},
-            'plys': {'max': 1, 'min': 1},  # {'max': 24, 'min': 1},
+            'plys':  {'values': [0] }, # {'max': 24, 'min': 1}, #TODO: Fix plys with Board_Representation Object - 0 Ply = 0 previous positions
             'lr': {'distribution': 'log_uniform_values', 'max': 2., 'min': 1e-9},
             'momentum': {'distribution': 'log_uniform_values', 'max': 2., 'min': 1e-9},
             'gamma': {'max': 1.1, 'min': 1e-4},

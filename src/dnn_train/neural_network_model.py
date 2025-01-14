@@ -117,7 +117,8 @@ class VariableConvNet(nn.Module):
 class NeuralNetwork(nn.Module):
     def __init__(self, plys, hidden_layer_size, num_conv_blocks, pooling_interval, dropout=0, squeeze_factor=2):
         super(NeuralNetwork, self).__init__()
-        # Each board is 8 x 8 board with 12 input channels (6 white pieces, 6 black pieces)
+        # Each board is 8 x 8 board with 12 input channels (6 white pieces, 6 black pieces) TODO: BITBOARD ONLY
+        # Each board is 8 x 8 board with 1 input channel and numbers for each piece TODO: PieceMap Only
         in_channels = 12 * (plys + 1)
         num_classes = 64 * 64  # From square * To square (4096 possible moves, although not all are valid)
 
