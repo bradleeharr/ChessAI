@@ -10,3 +10,5 @@ move_prediction/
 src/board_representations/__pycache__
 
 tests/board_representations/__pycache__/
+
+src/dnn_train/__pycache__/
