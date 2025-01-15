@@ -11,3 +11,8 @@ move_prediction/
 tests/board_representations/__pycache__/
 src/board_representations/__pycache__/
 src/dnn_train/__pycache__/
+wandb/
+.venv/
+.vscode/
+src/.vscode/
+src/wandb/
