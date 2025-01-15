@@ -26,6 +26,9 @@ class PieceMap(BoardRepresentation):
         super().__init__(num_previous_positions)
         self.in_channels = num_previous_positions + 1
 
+    def __str__(self):
+        return f"BoardRepresentation.PieceMap(num_previous_positions={self.num_previous_positions})"
+    
     # TODO: Currently only uses single ply -- "num_previous_positions" is redundant
     def board_to_model_input(self, board):
         board_input = np.zeros((self.num_previous_positions + 1, 8, 8), dtype=int)
