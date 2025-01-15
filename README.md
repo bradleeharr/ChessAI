@@ -25,8 +25,10 @@
 Inspired by [Maia Chess](https://maiachess.com/). Objective to use deep learning to mimic personal chess styles, emphasizing capturing human decision-making in rapid games.
 
 ### 2 | Data
-Focused personal game datasets to ensure unique results. The dataset (~2,000 games) is optimized for an AMD Ryzen CPU without GPU acceleration. 
-It comprises 1,633 Bullet, 165 Blitz, and 244 Rapid games. Emphasizing Bullet games captures impulsive decisions, providing a comprehensive play style view. All games were split into train, validation, and test sets (75-15-15).
+Focused personal game datasets to ensure unique results. The dataset (~2,000 games) is small enough to run on a CPU without GPU acceleration. 
+It comprised 1,633 Bullet, 165 Blitz, and 244 Rapid games. 
+
+In some ways, emphasizing Bullet games captures impulsive decisions, providing an edge into 'play style' view. All games were split into train, validation, and test sets (75-15-15).
 
 ### 3 | Methods
 **3.0 Board Features**:
