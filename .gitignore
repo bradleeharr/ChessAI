@@ -1,18 +1,23 @@
 .idea/vcs.xml
 *_lichess_games.pgn
-dnn_train/__pycache__/
 dnn_train/*_lichess_games.pgn
 dnn_train/lightning_logs/
 dnn_train/wandb/
+
 maia_chess_backend/
 move_prediction/
-**/__pycache__/*
 
+**/__pycache__/*
 tests/board_representations/__pycache__/
 src/board_representations/__pycache__/
+
+src/dnn_train/__pycache__/*
 src/dnn_train/__pycache__/
-wandb/
+dnn_train/__pycache__/
+
 .venv/
 .vscode/
+
 src/.vscode/
+wandb/
 src/wandb/
