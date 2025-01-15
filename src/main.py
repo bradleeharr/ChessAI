@@ -12,6 +12,8 @@ from pytorch_lightning.loggers.wandb import WandbLogger
 from pytorch_lightning.callbacks import EarlyStopping, LearningRateMonitor
 
 
+PROJECT = "chess_testing_sweep_revised"
+
 def train_model(target_player='bubbakill7'):
     # Get the Data
     my_username = target_player
@@ -27,7 +29,7 @@ def train_model(target_player='bubbakill7'):
                                             mode="min")
     lr_monitor = LearningRateMonitor(logging_interval="step")
 
-    wandb.init(project="chess_testing_sweep_revised")
+    wandb.init(project=PROJECT)
     config = wandb.config
 
     config.board_representation = PieceMap(config.plys)
@@ -53,7 +55,7 @@ def train_model(target_player='bubbakill7'):
     print("=====================================")
     
     # Create the PyTorch Lightning Trainer and train your model
-    trainer = pl.Trainer(accelerator=accelerator, devices=devices, max_epochs=10000,
+    trainer = pl.Trainer(accelerator=accelerator, devices=devices, max_epochs=1000,
                          default_root_dir="./lightning-example", logger=wandb_logger,
                          callbacks=[early_stopping_callback, lr_monitor])
     print("Beginning training fit")
@@ -90,5 +92,5 @@ if __name__ == '__main__':
         }
     }
 
-    sweep_id = wandb.sweep(sweep_config, project="openings_removed_chess_7_layer_residual_sweep3")
+    sweep_id = wandb.sweep(sweep_config, project=PROJECT)
     wandb.agent(sweep_id=sweep_id, function=train_model, count=100)

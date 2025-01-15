@@ -1,11 +1,15 @@
+import logging
+
+import torch
 import torchvision as torchvision
 from torch.utils.data import DataLoader, Dataset
 import pytorch_lightning as pl
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.data as data
-import torch
 from torch.optim.lr_scheduler import StepLR
+
+from config.logging_config import logger
 
 
 
@@ -54,7 +58,13 @@ class ResidualBlock(nn.Module):
         self.relu1 = nn.ReLU()
         self.conv2 = nn.Conv2d(in_channels, in_channels, kernel_size=3, padding=1)
         self.bn2 = nn.BatchNorm2d(in_channels)
-        self.se = torchvision.ops.SqueezeExcitation(in_channels, in_channels//squeeze_factor)
+
+        squeeze_channels = in_channels // squeeze_factor
+        if squeeze_channels == 0:
+            logger.warning("Squeeze Channels for SE Block are 0. Setting to 1.")
+            squeeze_channels = 1
+            
+        self.se = torchvision.ops.SqueezeExcitation(in_channels, squeeze_channels)
         self.relu2 = nn.ReLU()
 
     def forward(self, x):
@@ -70,10 +80,12 @@ class ResidualBlock(nn.Module):
         return out
 
 
+
 class VariableConvNet(nn.Module):
     def __init__(self, input_channels, num_classes, num_conv_blocks, pooling_interval, hidden_layer_size, dropout, squeeze_factor):
         super(VariableConvNet, self).__init__()
         in_channels = input_channels
+        logging.debug(f"In Channels: {in_channels}")
         self.dropout = nn.Dropout(dropout)
 
         # Create an input convolutional layer
@@ -96,12 +108,20 @@ class VariableConvNet(nn.Module):
 
     def forward(self, x):
         # Apply the input convolutional layer
+        logging.debug(x.size())
         x = self.conv0(x)
+        logging.debug("Conv0 Applied. Going on to BN0")
+        logging.debug(x.size())
         x = self.bn0(x)
+        logging.debug("BN0 Applied. Going on to RELU")
+        logging.debug(x.size())
         x = self.relu(x)
 
         # Apply the residual convolutional blocks
-        for layer in self.conv_layers:
+        for idx, layer in enumerate(self.conv_layers):
+            logging.debug(f"Layer: {idx}")
+            logging.debug(x.size())
+            logging.debug(layer)
             x = layer(x)
             x = self.dropout(x)
 
@@ -118,8 +138,11 @@ class NeuralNetwork(nn.Module):
     def __init__(self, plys, hidden_layer_size, num_conv_blocks, pooling_interval, dropout=0, squeeze_factor=2):
         super(NeuralNetwork, self).__init__()
         # Each board is 8 x 8 board with 12 input channels (6 white pieces, 6 black pieces) TODO: BITBOARD ONLY
-        # Each board is 8 x 8 board with 1 input channel and numbers for each piece TODO: PieceMap Only
-        in_channels = 12 * (plys + 1)
+        # in_channels = 12 * (plys + 1)
+
+        # Each board is 8 x 8 board with plys+1 input channels and numbers for each piece TODO: PieceMap Only
+        in_channels = (plys + 1)
+        
         num_classes = 64 * 64  # From square * To square (4096 possible moves, although not all are valid)
 
         self.convNet = VariableConvNet(input_channels=in_channels, num_classes=num_classes,

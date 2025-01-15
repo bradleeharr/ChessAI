@@ -1,6 +1,8 @@
 import logging
 import logging.config
 
-logging.basicConfig(level=logging.DEBUG)
+# In order of increasing verbosity:
+# CRITICAL -> ERROR -> WARNING -> INFO -> DEBUG -> NOTSET
+logging.basicConfig(level=logging.WARNING)
 
 logger = logging.getLogger()
