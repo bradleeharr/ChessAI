@@ -22,17 +22,15 @@ def train_model(target_player='bubbakill7'):
     else:
         print("Games found")
 
-    # Create the early stopping callback
+    # Callbacks for early stopping
     early_stopping_callback = EarlyStopping(monitor="validation_loss", min_delta=0.003, patience=5, verbose=True,
                                             mode="min")
-
-    # Create the learning rate monitor callback
     lr_monitor = LearningRateMonitor(logging_interval="step")
 
-    wandb.init(project="chess_testing_sweep")
+    wandb.init(project="chess_testing_sweep_revised")
     config = wandb.config
 
-    config.board_representation = PieceMap()
+    config.board_representation = PieceMap(config.plys)
 
     wandb_logger = WandbLogger()
     data = ChessDataModule(config=config, batch_size=batch_size, target_player=target_player)
@@ -48,6 +46,12 @@ def train_model(target_player='bubbakill7'):
         accelerator = "cpu"
         devices = 1
 
+    print("=====================================")
+    print("")
+    print("Accelerator Selected: ", accelerator.upper())
+    print("")
+    print("=====================================")
+    
     # Create the PyTorch Lightning Trainer and train your model
     trainer = pl.Trainer(accelerator=accelerator, devices=devices, max_epochs=10000,
                          default_root_dir="./lightning-example", logger=wandb_logger,
