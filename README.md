@@ -1,6 +1,6 @@
 **Chess AI based on a Lichess game database.** 
 
-# 0 | How to Run
+### 0 | How to Run
 
 0. Clone this repository
     * `git clone https://github.com/bradleeharr/ChessAI.git`
@@ -10,6 +10,7 @@
     * `.venv/Scripts/activate` (on Windows)
 2. Install requirements [to be added]
     * `pip install -r requirements.txt`
+    * Install the proper version of pytorch. If you want GPU acceleration make sure to install with cuda. Reference to: https://pytorch.org/
 3. Run 
     * `python dnn_train/main.py`
 4. Weights and Biases requires an API key - you will have to create an account or provide an API key 
@@ -20,14 +21,14 @@
  
 
 
-# 1 | Introduction
+### 1 | Introduction
 Inspired by [Maia Chess](https://maiachess.com/). Objective to use deep learning to mimic personal chess styles, emphasizing capturing human decision-making in rapid games.
 
-# 2 | Data
+### 2 | Data
 Focused personal game datasets to ensure unique results. The dataset (~2,000 games) is optimized for an AMD Ryzen CPU without GPU acceleration. 
 It comprises 1,633 Bullet, 165 Blitz, and 244 Rapid games. Emphasizing Bullet games captures impulsive decisions, providing a comprehensive play style view. All games were split into train, validation, and test sets (75-15-15).
 
-# 3 | Methods
+### 3 | Methods
 **3.0 Board Features**:
 
 There are several possible board representations. For now, imagine you would like to capture a single state
@@ -39,7 +40,6 @@ There are several possible board representations. For now, imagine you would lik
     * Bitboards are common in chess engines
     
 
-uiop  
 **3.1 Move Features**:
 
  Moves were translated from the Universal Chess Interface to a numerical system, leading to 4096 potential classes.
@@ -48,7 +48,7 @@ uiop
 
 A baseline model, achieving 3.1-3.6% accuracy through random move selection.
 
-# 4 | Base Convolutional Model:
+### 4 | Base Convolutional Model:
 
 ![image](https://github.com/bradleeharr/BradleeAI/assets/56418392/ec95dcc9-ee64-4d30-9167-0b18f78e52ca)
 
