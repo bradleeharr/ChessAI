@@ -1,19 +1,31 @@
 **Chess AI based on a Lichess game database.** 
 
-### 0 | How to Run
+### How to Run
 
-0. Clone this repository
-    * `git clone https://github.com/bradleeharr/ChessAI.git`
-1. Make a python venv  
-    * `python -m venv .venv`
-2. Activate the venv
-    * `.venv/Scripts/activate` (on Windows)
-2. Install requirements [to be added]
-    * `pip install -r requirements.txt`
-    * Install the proper version of pytorch. If you want GPU acceleration make sure to install with cuda. Reference to: https://pytorch.org/
-3. Run 
-    * `python dnn_train/main.py`
-4. Weights and Biases requires an API key - you will have to create an account or provide an API key 
+1. Clone this repository
+   ```
+   git clone https://github.com/bradleeharr/ChessAI.git
+   ```
+2. Make a python venv  
+```
+python -m venv .venv
+```
+3. Activate the venv
+```
+.venv/Scripts/activate # (On Windows)
+``` 
+4. Install requirements
+```
+pip install -r requirements.txt
+```
+
+* Install the proper version of pytorch. If you want GPU acceleration make sure to install with cuda. Reference to: https://pytorch.org/
+
+5. Run 
+```
+python dnn_train/main.py
+```
+Weights and Biases requires an API key - you will have to create an account or provide an API key 
     * Go to https://wandb.ai/home for an API key, or press "3" after running to skip this and not have results visualized.
 
 
