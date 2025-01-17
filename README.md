@@ -3,9 +3,9 @@
 ### How to Run
 
 1. Clone this repository
-   ```
-   git clone https://github.com/bradleeharr/ChessAI.git
-   ```
+```
+git clone https://github.com/bradleeharr/ChessAI.git
+```
 2. Make a python venv  
 ```
 python -m venv .venv
