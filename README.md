@@ -28,11 +28,12 @@ python dnn_train/main.py
 Weights and Biases requires an API key - you will have to create an account or provide an API key 
     * Go to https://wandb.ai/home for an API key, or press "3" after running to skip this and not have results visualized.
 
+---
 
 * To run tests, cd into the src directory and run `pytest`
  
 
-
+---
 ### 1 | Introduction
 Inspired by [Maia Chess](https://maiachess.com/). Objective to use deep learning to mimic personal chess styles, emphasizing capturing human decision-making in rapid games.
 
